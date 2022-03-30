@@ -1,46 +1,22 @@
-const portfolioItem = [
-    {
-        id: 1,
-        title: "Item 1"
-    },
-    {
-        id: 2,
-        title: "Item 2"
-    },
-    {
-        id: 3,
-        title: "Item 4"
-    },
-    {
-        id: 4,
-        title: "Item6"
-    },
-    {
-        id: 4,
-        title: "Item6"
-    },
-    {
-        id: 4,
-        title: "Item6"
-    },
-    {
-        id: 4,
-        title: "Item6"
-    }
-];
+import portfolioItems from "../data/portfolio.json";
 
 const PortfolioGrid = () => {
-
-
     
     return (
         <section className="bg-primary">
-            <div class="container p-3">
+            <div className="container p-3">
                 <div className="row g-3">
-                    {portfolioItem.map((item) => (
-                        <div className="col-md-6" key={item.id}>
-                            <div className="card card-body">
-                                {item.title}
+                    {portfolioItems.map(({ id, title, url, image, description }) => (
+                        <div className="col-lg-6" key={id}>
+                            <div className="card h-100">
+                                <img src={image} className="card-img-top" alt={`A sample image of the ${title} project`} />
+                                <div className="card-body">
+                                    <h5 className="card-title">{title}</h5>
+                                    <p className="card-text">{description}</p>
+                                </div>
+                                <div className="card-footer text-end">
+                                    <a href={url} target="_blank" className="btn btn-primary">View the Github</a>
+                                </div>
                             </div>
                         </div>
                     ))}
